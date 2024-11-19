@@ -1,17 +1,21 @@
 const express = require('express')
 const router = express.Router();
+const posts = require('../posts')
+
 
 // CRUD sulla risorsa post 
 
 // index 
 router.get('/',(req,res) => {
-    res.send('Ecco l\'elenco dei post!');
+    // res.send('Ecco l\'elenco dei post!');
+    res.json(posts)
 })
 
 // show 
 router.get('/:id',(req,res) => {
     const id = req.params.id
-    res.send(`Ecco il post con id: ${id}`);
+    // res.send(`Ecco il post con id: ${id}`);
+    res.json(posts[id])
 })
 
 // store 
