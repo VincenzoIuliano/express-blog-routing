@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const posts = require('../posts')
+const posts = require('../data/posts')
 
 
 // CRUD sulla risorsa post 
@@ -13,9 +13,16 @@ router.get('/',(req,res) => {
 
 // show 
 router.get('/:id',(req,res) => {
-    const id = req.params.id
+    const {id} = req.params;
     // res.send(`Ecco il post con id: ${id}`);
-    res.json(posts[id])
+    if (id > posts.length) {
+        //res.status(404);
+        res.json({
+           err: 'post not found' 
+        });
+    } else {
+        res.json(posts[id]);
+    }
 })
 
 // store 

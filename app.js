@@ -13,6 +13,11 @@ app.get('/',(req,res) => {
 
 app.use('/posts', postsRouter)
 
-app.listen(port,() => {
+const server = app.listen(port,() => {
     console.log(`Server listening on port: ${port}`);
 })
+
+process.on('SIGINT', () => {
+    console.log('Uscita graceful');
+    server.close();
+});
