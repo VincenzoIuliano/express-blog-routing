@@ -1,35 +1,35 @@
 const express = require('express')
-const router = express.router();
+const router = express.Router();
 
 // CRUD sulla risorsa post 
 
 // index 
-app.get('/',(req,res) => {
+router.get('/',(req,res) => {
     res.send('Ecco l\'elenco dei post!');
 })
 
 // show 
-app.get('/:id',(req,res) => {
+router.get('/:id',(req,res) => {
     res.send(`Ecco il post con id: ${req.params.id}`);
 })
 
 // store 
-app.post('/', (req,res) => {
+router.post('/', (req,res) => {
     res.send('Creazione di un nuovo post');       
 })
 
 // update 
-app.put('/:id',(req,res) => {
+router.put('/:id',(req,res) => {
     res.send(`Modifica integrale del post ${req.params.id}`)
 })
 
 // modify 
-app.patch(':id',(req,res) => {
-    res.send(`Modifica parziale del post${req.params.id}`)
+router.patch('/:id',(req,res) => {
+    res.send(`Modifica parziale del post ${req.params.id}`)
 })
 
 // destroy 
-app.delete('/:id',(req,res) => {
+router.delete('/:id',(req,res) => {
     res.send(`Rimozione del post ${req.params.id}`)
 })
 
